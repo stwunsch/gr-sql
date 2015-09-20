@@ -33,11 +33,10 @@ namespace gr {
       // Nothing to declare in this block.
 
      public:
-      msg_to_table_impl(std::string user, std::string password, std::string database, std::string table);
+      msg_to_table_impl(std::string user, std::string password, std::string database, std::string table, std::string host, unsigned int port);
       ~msg_to_table_impl();
 
       MYSQL *d_mysql;
-
     };
 
   } // namespace sql

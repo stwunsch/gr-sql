@@ -45,7 +45,7 @@ namespace gr {
        * class. sql::msg_to_table::make is the public interface for
        * creating new instances.
        */
-      static sptr make(std::string user, std::string password, std::string database, std::string table);
+      static sptr make(std::string user, std::string password, std::string database, std::string table, std::string host = "127.0.0.1", unsigned int port = 0);
     };
 
   } // namespace sql

@@ -32,9 +32,18 @@ class qa_msg_to_table (gr_unittest.TestCase):
 
     def test_001_t (self):
         # set up fg
+        #host = '127.0.0.1'
+        #port = 0 # default
+        user = 'my_user'
+        password = 'my_password'
+        database = 'my_db'
+        table = 'my_table'
+        #test = sql.msg_to_table(user,password,database,table,host,port)
+        test = sql.msg_to_table(user,password,database,table)
+
         self.tb.run ()
         # check data
 
 
 if __name__ == '__main__':
-    gr_unittest.run(qa_msg_to_table, "qa_msg_to_table.xml")
+    gr_unittest.run(qa_msg_to_table)#, "qa_msg_to_table.xml")
