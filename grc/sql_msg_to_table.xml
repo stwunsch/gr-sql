@@ -1,38 +1,39 @@
-<?xml version="1.0"?>
 <block>
-  <name>msg_to_table</name>
+  <name>SQL Connector: Msg to Table</name>
   <key>sql_msg_to_table</key>
-  <category>sql</category>
+  <category>SQL</category>
   <import>import sql</import>
-  <make>sql.msg_to_table($user, $password, $database, $table)</make>
-  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
-       Sub-nodes:
-       * name
-       * key (makes the value accessible as $keyname, e.g. in the make node)
-       * type -->
+  <make>sql.msg_to_table($user, $password, $database, $table, $host, $port)</make>
   <param>
-    <name>...</name>
-    <key>...</key>
-    <type>...</type>
+    <name>User</name>
+    <key>user</key>
+    <type>string</type>
   </param>
-
-  <!-- Make one 'sink' node per input. Sub-nodes:
-       * name (an identifier for the GUI)
-       * type
-       * vlen
-       * optional (set to 1 for optional inputs) -->
-  <sink>
-    <name>in</name>
-    <type><!-- e.g. int, float, complex, byte, short, xxx_vector, ...--></type>
-  </sink>
-
-  <!-- Make one 'source' node per output. Sub-nodes:
-       * name (an identifier for the GUI)
-       * type
-       * vlen
-       * optional (set to 1 for optional inputs) -->
-  <source>
-    <name>out</name>
-    <type><!-- e.g. int, float, complex, byte, short, xxx_vector, ...--></type>
-  </source>
+  <param>
+    <name>Password</name>
+    <key>password</key>
+    <type>string</type>
+  </param>
+  <param>
+    <name>Database</name>
+    <key>database</key>
+    <type>string</type>
+  </param>
+  <param>
+    <name>Table</name>
+    <key>table</key>
+    <type>string</type>
+  </param>
+  <param>
+    <name>Host</name>
+    <key>host</key>
+    <value>"127.0.0.1"</value>
+    <type>string</type>
+  </param>
+  <param>
+    <name>Port</name>
+    <key>port</key>
+    <value>0</value>
+    <type>raw</type>
+  </param>
 </block>
