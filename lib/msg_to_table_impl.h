@@ -35,8 +35,12 @@ namespace gr {
      public:
       msg_to_table_impl(std::string user, std::string password, std::string database, std::string table, std::string host, unsigned int port);
       ~msg_to_table_impl();
+      void handle_msg(pmt::pmt_t msg);
 
       MYSQL *d_mysql;
+      std::string d_table;
+
+      pmt::pmt_t d_port_id_in;
     };
 
   } // namespace sql

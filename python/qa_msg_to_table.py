@@ -21,6 +21,8 @@
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
 import sql_swig as sql
+import pmt
+from time import sleep
 
 class qa_msg_to_table (gr_unittest.TestCase):
 
@@ -31,18 +33,36 @@ class qa_msg_to_table (gr_unittest.TestCase):
         self.tb = None
 
     def test_001_t (self):
-        # set up fg
-        #host = '127.0.0.1'
-        #port = 0 # default
+        # set up message
+
+        msg1 = pmt.list3(pmt.string_to_symbol('id'),pmt.string_to_symbol('int'),pmt.from_long(42))
+        msg2 = pmt.list3(pmt.string_to_symbol('value'),pmt.string_to_symbol('float'),pmt.from_float(3.1416))
+        msg3 = pmt.list3(pmt.string_to_symbol('text'),pmt.string_to_symbol('string'),pmt.string_to_symbol('some text'))
+        msg = pmt.list3(msg1,msg2,msg3)
+
+        # set up sql connection
+
+        host = '127.0.0.1'
+        port = 0 # default
         user = 'my_user'
         password = 'my_password'
         database = 'my_db'
         table = 'my_table'
-        #test = sql.msg_to_table(user,password,database,table,host,port)
-        test = sql.msg_to_table(user,password,database,table)
 
-        self.tb.run ()
-        # check data
+        # set up flowgraph
+
+        if 0: # Enable and disable here
+            msg_src = blocks.message_strobe(msg,100)
+            sql_connector = sql.msg_to_table(user,password,database,table,host,port)
+
+            self.tb.msg_connect(msg_src,'strobe',sql_connector,'Msg in')
+
+        # run flowgraph
+
+        self.tb.start()
+        sleep(0.2)
+        self.tb.stop()
+        self.tb.wait()
 
 
 if __name__ == '__main__':
