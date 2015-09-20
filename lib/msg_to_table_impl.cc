@@ -59,20 +59,23 @@ namespace gr {
                            port,                /* port number, 0 for default */
                            NULL,             /* socket file or named pipe name */
                            CLIENT_FOUND_ROWS /* connection flags */ )){
-            std::string error_msg = "Connection to Mysql server failed: ";
+            std::string error_msg = "Connection to MySQL server failed: ";
             error_msg.append(mysql_error(d_mysql));
             throw std::runtime_error(error_msg.c_str());
         }
         else{
-            std::cout << "Connection to Mysql server established." << std::endl;
-            std::cout << "Selected user: " << user << std::endl;
-            std::cout << "Selected database: " << database << std::endl;
-            std::cout << "MySQL Server Info: " << mysql_get_server_info(d_mysql) << std::endl;
+            std::cout << "Connection to MySQL server established." << std::endl;
+            std::cout << "-> Selected user: " << user << std::endl;
+            std::cout << "-> Selected database: " << database << std::endl;
+            std::cout << "-> MySQL Server Info: " << mysql_get_server_info(d_mysql) << std::endl;
+            std::cout << "-> MySQL Client Info: " << mysql_get_client_info() << std::endl;
         }
+
+        // Init msg ports
 
         // Test insert to given table
         MYSQL_STMT* stmt = mysql_stmt_init(d_mysql);
-        std::string query = "INSERT INTO my_tab (id,value) VALUES (16,42.42);";
+        std::string query = "INSERT INTO my_tab (id,value) VALUES (17,42.42);";
         if(mysql_stmt_prepare(stmt, query.c_str(), query.size())){
             std::string error_msg = "SQL query init failed: ";
             error_msg.append(mysql_stmt_error(stmt));
