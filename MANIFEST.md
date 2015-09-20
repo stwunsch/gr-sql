@@ -1,11 +1,12 @@
 title: The SQL OOT Module
 brief: Short description of gr-sql
 tags: # Tags are arbitrary, but look at CGRAN what other authors are using
-  - sdr
+  - SQL
+  - database
 author:
-  - Author Name <authors@email.address>
+  - Stefan Wunsch
 copyright_owner:
-  - Copyright Owner 1
+  - Stefan Wunsch
 license:
 #repo: # Put the URL of the repository here, or leave blank for default
 #website: <module_website> # If you have a separate project website, put it here

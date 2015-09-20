@@ -18,5 +18,5 @@
 # Boston, MA 02110-1301, USA.
 
 install(FILES
-    DESTINATION share/gnuradio/grc/blocks
+    sql_msg_to_table.xml DESTINATION share/gnuradio/grc/blocks
 )

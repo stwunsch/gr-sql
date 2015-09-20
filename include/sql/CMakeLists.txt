@@ -22,5 +22,5 @@
 ########################################################################
 install(FILES
     api.h
-    DESTINATION include/sql
+    msg_to_table.h DESTINATION include/sql
 )

@@ -26,6 +26,7 @@ include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
 
 list(APPEND sql_sources
+    msg_to_table_impl.cc
 )
 
 set(sql_sources "${sql_sources}" PARENT_SCOPE)
@@ -35,7 +36,7 @@ if(NOT sql_sources)
 endif(NOT sql_sources)
 
 add_library(gnuradio-sql SHARED ${sql_sources})
-target_link_libraries(gnuradio-sql ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
+target_link_libraries(gnuradio-sql ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES} ${MYSQL_LIBRARIES})
 set_target_properties(gnuradio-sql PROPERTIES DEFINE_SYMBOL "gnuradio_sql_EXPORTS")
 
 if(APPLE)
@@ -72,6 +73,7 @@ target_link_libraries(
   ${GNURADIO_RUNTIME_LIBRARIES}
   ${Boost_LIBRARIES}
   ${CPPUNIT_LIBRARIES}
+  ${MYSQL_LIBRARIES}
   gnuradio-sql
 )
 
