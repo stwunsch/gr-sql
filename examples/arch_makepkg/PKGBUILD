@@ -1,0 +1,26 @@
+pkgname=gr-sql
+_gitname=gr-sql
+pkgver=git
+pkgrel=1
+pkgdesc="GNU Radio module for writing to SQL databases"
+arch=('x86_64')
+license=('GPL')
+depends=('libmariadbclient')
+makedepends=('git' 'cmake' 'make')
+optdepends=()
+source=("git://github.com/stwunsch/gr-sql")
+md5sums=('SKIP')
+conflicts=()
+provides=()
+
+build() {
+  mkdir -p $_gitname/build
+  cd $_gitname/build
+  cmake ..
+  make -j4
+}
+
+package() {
+  cd "$srcdir/$_gitname/build"
+  make DESTDIR="$pkgdir" install
+}
