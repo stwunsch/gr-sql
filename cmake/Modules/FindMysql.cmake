@@ -6,21 +6,25 @@ find_path(
     NAMES mysql.h
     HINTS ${PC_MYSQL_INCLUDEDIR}
           ${PC_MYSQL_INCLUDE_DIRS}
+    PATH_SUFFIXES mariadb
+                  mysql
 )
 
 if(APPLE)
     find_library(
         MYSQL_LIBRARIES
-        NAMES libmysql.dylib
-        HINTS ${PC_LIBXML_LIBDIR}
-              ${PC_LIBXML_LIBRARY_DIRS}
+        NAMES mariadb/libmysql.dylib
+              libmysql.dylib
+              HINTS ${PC_MYSQL_LIBDIR}
+              ${PC_MYSQL_LIBRARY_DIRS}
     )
 else(APPLE)
     find_library(
         MYSQL_LIBRARIES
-        NAMES libmysqlclient.so
-        HINTS ${PC_LIBXML_LIBDIR}
-              ${PC_LIBXML_LIBRARY_DIRS}
+        NAMES mariadb/libmysqlclient.so
+              libmysqlclient.so
+              HINTS ${PC_MYSQL_LIBDIR}
+              ${PC_MYSQL_LIBRARY_DIRS}
     )
 endif(APPLE)
 
