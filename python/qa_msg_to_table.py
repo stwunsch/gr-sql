@@ -37,8 +37,8 @@ class qa_msg_to_table (gr_unittest.TestCase):
 
         msg1 = pmt.list3(pmt.string_to_symbol('id'),pmt.string_to_symbol('int'),pmt.from_long(42))
         msg2 = pmt.list3(pmt.string_to_symbol('value'),pmt.string_to_symbol('float'),pmt.from_float(3.1416))
-        msg3 = pmt.list3(pmt.string_to_symbol('text'),pmt.string_to_symbol('string'),pmt.string_to_symbol('some text'))
-        msg = pmt.list3(msg1,msg2,msg3)
+        #msg3 = pmt.list3(pmt.string_to_symbol('text'),pmt.string_to_symbol('string'),pmt.string_to_symbol('some text'))
+        msg = pmt.list2(msg1,msg2)
 
         # set up sql connection
 

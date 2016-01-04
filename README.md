@@ -9,6 +9,8 @@ Run MariaDB with Docker
 
 First download the latest docker image of MariaDB with 'docker pull mariadb'. You have to start the docker service with a command like 'systemctl enable docker.service' (that depends on your system). Then run the latest Docker image with 'docker run --name mariadb_instance_name -e MYSQL_ROOT_PASSWORD=my_password -d mariadb:latest'. See [0] for more information.
 
+You can start and stop this instance from now on with 'docker start mariadb_instance_name' and 'docker stop mariadb_instance_name'.
+
 Setup the MySQL database
 ------------------------
 
